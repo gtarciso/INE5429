@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-#define MAX 256
+#define MAX 512
 
 int satisfyTest(int k, int n, int *m) {
 	// inequation m(0) * m(n-k+2) * ... * m(n) < m(1) * ... * m(k)
@@ -17,10 +17,13 @@ int satisfyTest(int k, int n, int *m) {
 	for(i = 1; i <= k; i++) {
 		right *= m[i];
 	}
-	if(left < right)
+	printf("%d < %d\n", left, right);
+	if(left < right) {
 		return 1;
-	else
+	}
+	else {
 		return 0;
+	}
 }
 
 int isPrime(int n) {
@@ -38,7 +41,7 @@ void generateCoprimes(int *m, int n) {
 	int i, aux;
 	for(i = 0; i <= n; i++) {
 		do {
-			aux = rand() % MAX;
+			aux = rand() % MAX; 
 		} while(isPrime(aux) != 1);
 		m[i] = aux;
 	}
@@ -86,7 +89,7 @@ void generateSequence(int *m, int n, int k) {
 		do {
 			sort(m, n+1, 0);
 		} while(sorted(m, n) != 1);
-	} while(satisfyTest(k, n, m)!= 0);
+	} while(satisfyTest(k, n, m) == 0);
 
 }
 
@@ -162,6 +165,7 @@ int reconstruct(int *parts, int k, int *modulo) {
 	if(x0 < 0) {
 		secret += m;
 	}
+	printf("secret = %d\n", secret);
 	secret = secret % modulo[0];
 	return secret;
 }
@@ -197,6 +201,7 @@ void createSecret() {
 	scanf("%d", &secret);
 	generateSequence(m, n, k);
 	alpha = generateAlpha(secret, m, k);
+	printf("alpha = %d\n", alpha);
 	generateParts(m, alpha, n, secret, parts);
 	printf("o m0 é: %d\n", m[0]);
 	printf("a sequencia e as partes geradas foram\n");

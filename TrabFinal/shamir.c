@@ -37,7 +37,7 @@ int lagrangeInterpolation(int *pointsX, int *pointsY, int k, int p) {
 	
 	for (j = 0; j < k; j++) {
 		aux = 1;
-		for (m = 0; m < k;m++) {
+		for (m = 0; m < k; m++) {
 			if (m != j) {
 				// sub = xm - xj
 				int sub = pointsX[m]-pointsX[j];
@@ -47,10 +47,13 @@ int lagrangeInterpolation(int *pointsX, int *pointsY, int k, int p) {
 				// use the inverse of (xm - xj) * xm to get the interpolation in finite field	
 				aux *= pointsX[m]*euclides(sub, p);
 				aux = aux % p;
+				printf("%d * %d | euclides de %d - %d\n", pointsX[m], euclides(sub, p), pointsX[m], pointsX[j]);
 			}
 		}
 		l += aux*pointsY[j];
+		printf("l = %d * %d = %d\n", aux, pointsY[j], l);
 		l = l % p;
+		printf("l = %d\n", l);
 	}
 	
 	if(l < 0)
