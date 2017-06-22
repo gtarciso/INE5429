@@ -69,7 +69,7 @@ void sort(int *m, int n, int b) {
 	}
 }
 
-// just a method to certificate that the array is really sorted
+// just a method to certify that the array is really sorted
 int sorted(int *m, int n) {
 	int i;
 	for(i = 0; i < n; i++) {
