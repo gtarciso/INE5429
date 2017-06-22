@@ -195,11 +195,6 @@ void createSecret() {
 	int i;
 	printf("informe o segredo\n");
 	scanf("%d", &secret);
-	/*
-	printf("informe a cadeia de coprimos em sequencia\n");
-	for(i = 0; i <= n; i++) {
-		scanf("%d", &m[i]);
-	}*/
 	generateSequence(m, n, k);
 	alpha = generateAlpha(secret, m, k);
 	generateParts(m, alpha, n, secret, parts);
